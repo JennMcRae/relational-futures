@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Emerging Relational Economy: Exploring Alternatives to TINA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter Tight', sans-serif; /* Body font */
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff; /* Reverted to white */
+            color: #222222; /* Dark text from palette */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4 { /* Applied Inter Tight to all heading levels and made them bold */
+            font-family: 'Inter Tight', sans-serif; /* Heading font */
+            font-weight: 700; /* Bold */
+            color: #f969a2; /* Primary pink */
+            margin-top: 1.5em;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 2em;
+            border-bottom: 3px solid #e9a939; /* Orange accent */
+            padding-bottom: 8px;
+            margin-bottom: 1.2em;
+        }
+        h3 {
+            font-size: 1.6em;
+            color: #6eb5b0; /* Teal accent */
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        .intro-box {
+            background-color: #f5e3dc; /* Light neutral from palette */
+            border-left: 5px solid #f969a2; /* Primary pink border */
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .pathway-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .pathway-card {
+            background-color: #fcfcfc;
+            border: 1px solid #d6b8af; /* Neutral border */
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-sizing: border-box;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            min-width: 280px;
+        }
+        .pathway-card h3 {
+            margin-top: 0;
+            color: #aa6ea1; /* Purplish-pink accent */
+        }
+        .blue-ocean-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .blue-ocean-card {
+            background-color: #fcfcfc;
+            border: 1px solid #d6b8af; /* Neutral border */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .blue-ocean-card h4 {
+            margin-top: 0;
+            color: #f5c518; /* Yellow accent */
+            font-size: 1.3em;
+        }
+        .exploratory-section, .ai-section {
+            background-color: #f8f8f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #a3d3cd; /* Light teal border */
+        }
+        .exploratory-section select, .ai-section select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #a3d3cd; /* Light teal border */
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #fff;
+            color: #333;
+            appearance: none; /* Remove default dropdown arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23222222%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.4H18.2c-7.9%200-14.7%205.2-16.7%2012.9-.9%203.4.1%207.2%202.9%2010.2L146.2%20251c2.8%202.8%206.5%204.3%2010.2%204.3s7.4-1.5%2010.2-4.3l144.2-168.9a17.6%2017.6%200%200%200%202.9-10.2z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+            cursor: pointer;
+        }
+        .ai-section button {
+            background-color: #f969a2; /* Primary pink */
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px; /* More rounded */
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .ai-section button:hover {
+            background-color: #ba759a; /* Darker purplish-pink on hover */
+            transform: translateY(-2px);
+        }
+        .ai-response-box {
+            background-color: #f5e3dc; /* Light neutral */
+            border: 2px dashed #f4b642; /* Yellow/orange dashed border */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-style: italic;
+            color: #333;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #f969a2; /* Primary pink spinner */
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #d6b8af; /* Neutral border for table */
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .comparison-table th {
+            background-color: #2d8f8e; /* Teal accent for table header */
+            color: white;
+            font-weight: bold;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .comparison-table tr:hover {
+            background-color: #f0f0f0;
+        }
+        .attribution {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+        .attribution a {
+            color: #f969a2; /* Primary pink for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .attribution a:hover {
+            text-decoration: underline;
+        }
+        .chatbot-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            border: 1px solid #a3d3cd;
+            text-align: center;
+        }
+        .chatbot-section h3 {
+            color: #f969a2;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .chatbot-iframe-container {
+            width: 100%;
+            max-width: 600px; /* Adjust as needed */
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures border-radius applies to iframe */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .chatbot-iframe {
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .pathway-card {
+                flex: 1 1 100%; /* Stack cards on small screens */
+            }
+            .exploratory-section select, .ai-section select, .ai-section button {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Emerging Relational Economy: Exploring Alternatives to TINA</h1>
+
+        <div class="intro-box">
+            <p>For decades, Margaret Thatcher's assertion that "There Is No Alternative" (TINA) to neoliberal economic solutions has dominated global discourse. This project challenges that claim by demonstrating a rich landscape of alternative, robust, and well-developed economic models.</p>
+            <p>At its core, this work posits that a "Relational Economy" is emerging from the current "Transactional Economy," manifesting under various names and forms worldwide. What comes next is not a single replacement, but a broad umbrella encompassing these diverse alternative systems. It's time to bid farewell to TINA.</p>
+        </div>
+
+        <h2>Context: Why a New Economy?</h2>
+        <p>We are currently operating within the "Transactional Economy," often termed 'Late Stage Capitalism.' This system is characterized by disconnection, extraction, and exploitation, with a linear design that makes it inherently unsustainable. Wealth creation is centered on transactions rather than exchanges of value, and individuals are prioritized over collectives.</p>
+        <p>However, humanity stands at an evolutionary inflection point, experiencing an unprecedented period of "creative destruction." Systems science and Indigenous worldviews both affirm that economies, like all organic life, operate in cycles, and evolution involves integrating the old to create the new.</p>
+
+        <h3>Emergence Signals of a Post-Capitalist Future:</h3>
+        <ul>
+            <li><strong>New Normals:</strong> The post-internet era has brought new norms marked by disillusionment with traditional models and an embrace of alternative value systems, moving away from "growth-at-all-costs" towards sustainable, equitable frameworks. Digital currencies, the sharing economy, and collaborative consumption are at the forefront of this evolution.</li>
+            <li><strong>Ascendancy of the Creator Class & Community-Centric Businesses:</strong> McKinsey highlights community as key to future business success. The burgeoning Creator Economy facilitates the conversion of social capital into community wealth, necessitating infrastructure for micro, multi-source revenue activities. Trust will drive innovation.</li>
+            <li><strong>Embracing 'Better Not Bigger':</strong> In contrast to the Transactional Economy's drive for endless expansion, the Relational Economy champions enhancement over enlargement. Success is measured by quality of life enrichment and maximizing well-being, with businesses rooted in Community Care consistently finding demand exceeding supply.</li>
+        </ul>
+
+        <h2>The Pathways to Prosperity</h2>
+        <p>This study identifies three key pathways in this economic evolution:</p>
+        <div class="pathway-section">
+            <div class="pathway-card">
+                <h3>Pathway 1: The Transactional Economy</h3>
+                <p>The prevailing NeoLiberal economic worldview, focused on disconnection, extraction, and exploitation. Linear and unsustainable, it centers on transactions and prioritizes individuals.</p>
+            </div>
+            <div class="pathway-card">
+                <h3>Pathway 2: The Transition Economy</h3>
+                <p>Values, infrastructure, and services aimed at transitioning humanity, particularly in energy and materials, to solve environmental externalities of capitalism. It's a bridge, but still holds transitional mindsets.</p>
+            </div>
+            <div class="pathway-card">
+                <h3>Pathway 3: The Relational Economy</h3>
+                <p>An emergent, eventually post-capitalist economy enabling economic sovereignty for individuals and collectives. It's rooted in a worldview of connection, re-enabled by the digital global oral culture. Expressions include the Creator Economy, Wellbeing Economy, Alternative Lifestyles Economy, and Indigenous Economy.</p>
+            </div>
+        </div>
+
+        <h2>Explore Alternative Economic Paradigms</h2>
+        <div class="exploratory-section">
+            <p>Select a "Comparison Aspect" from the dropdown to see how different relational economic models approach it:</p>
+            <select id="comparisonAspectSelect">
+                <option value="">-- Select an Aspect to Compare --</option>
+            </select>
+            <table class="comparison-table" id="comparisonTable">
+                <thead>
+                    <tr>
+                        <th>Economic Model</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Comparison results will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ai-section">
+            <h2>AI-Powered Insights ✨</h2>
+            <p>Select an economic model to get a quick summary generated by the Gemini AI:</p>
+            <select id="economicModelSelectAI">
+                <option value="">-- Select an Economic Model for AI Summary --</option>
+            </select>
+            <button id="generateSummaryBtn">✨ Generate Sparkle Summary</button>
+            <div class="ai-response-box" id="aiResponse">
+                Select an economic model and click "Generate Sparkle Summary" to get an AI-powered overview.
+            </div>
+        </div>
+
+        <h2>The Indigenous Future and Blue Oceans</h2>
+        <p>This study concludes that "The Now/Future is Indigenous," highlighting Indigenous cultural practices as a strategic advantage in this emerging relational future.</p>
+        <p>Solving for capitalism's psycho-spiritual externalities will unlock significant community wealth creation. These externalities have created four "Blue Oceans" of opportunity, particularly for organizations seeking to align with the Relational Economy:</p>
+
+        <div class="blue-ocean-grid">
+            <div class="blue-ocean-card">
+                <h4>Blue Ocean #1: Pain (Wellbeing Economy)</h4>
+                <p>Signal: The PainDemic. Opportunity Space: Wellbeing Economy (Market Size: <\$5.6 Trillion in 2023). Focus on Community Growth Infrastructure and Community Care Ecosystems.</p>
+            </div>
+            <div class="blue-ocean-card">
+                <h4>Blue Ocean #2: Mass Movement (Refuge Economy)</h4>
+                <p>Signal: The Poly Perma Crisis. Opportunity Space: Refuge Economy (1.2 Billion Climate Migrants by 2050). Focus on Livelihood Infrastructure and Micro & Community Scale Mergers & Acquisitions.</p>
+            </div>
+            <div class="blue-ocean-card">
+                <h4>Blue Ocean #3: Advanced Technological Literacy (Creator Economy)</h4>
+                <p>Signal: The AI Revolution. Opportunity Space: Creator Economy (Market Size: \$250 Billion in 2023, with Sam Altman seeking \$7 Trillion AI Infrastructure Investment). Focus on Technological Infrastructure and Emerging Technologies.</p>
+            </div>
+            <div class="blue-ocean-card">
+                <h4>Blue Ocean #4: Stories (Indigenous Economy)</h4>
+                <p>Signal: Sociocultural Entropy. Opportunity Space: Indigenous Economy (Market Size: \$32 Billion in 2023, projected to \$100 Billion by 2030). Focus on Storytelling Infrastructure and New Media Ventures.</p>
+            </div>
+        </div>
+
+        <h3>Actionable Opportunities Include:</h3>
+        <p>REIT, Lending (Member Mortgages, Loans), Tourism (cultural, wellbeing, remote working, sabbaticals, rest, transitions), Education & Training, Healthcare, Housing, Lifestyles & Neo-Nomads (Additions to Reserve), Storytelling, New Media, Interactive Entertainment & Creative Industries, Community, Caretaking & Loneliness, Acquisitions & Partnerships, Economic Substitutions, Lifestyle Enablement, Tech, AI and Telecommunications, Restoration, Mitigation & Adaptation, Net-Zero Economy (clean fuels/hydrogen, electrification, critical minerals, forestry, carbon management, regulatory efficiency), Cannabis, Psychedelics and (Traditional) Healing Technologies, Northern Community Infrastructure (Territories & Urban), Micro Entrepreneurship, Festivals & Events, Indigenous Economy & Entrepreneurship (Investing), Rights & Reconciliation (IBAs, UNDRIP, etc), Agriculture, Self-employment & Remote Working.</p>
+
+        <h2>Conclusion: Goodbye TINA!</h2>
+        <p>The evidence is robust and convincing: a post-capitalist, Indigenous-led future is emerging, filled with "Blue Oceans" of opportunity.</p>
+        <p>The scale that matters most is "networked-micro"; small, nimble, and flexible organizations will thrive, while large, rigid, and entrenched systems will struggle to adapt.</p>
+        <p>The most crucial capacities are those uniquely human—expressions of collective care. The "Transactional Economy" and its infrastructure should be seen as stranded assets, needing repurposing and regeneration, not growth.</p>
+        <p>The true "Blue Ocean" opportunity lies in building Communities of Care that invite everyone to participate in a culture and economy focused on being "Better, not just Bigger."</p>
+        <p>These opportunities exist today, irrespective of future technological advancements, and call for voluntary practice of new ways of being and doing to achieve "Prosperity For All People Of All Time."</p>
+
+    </div>
+
+    <div class="attribution">
+        <p>This study was completed by Jenn McRae. Jenn is a neurocomplex strategist, writer, podcaster, and futurist exploring AI, culture, transformation & love ethics. Learn more about Jenn and these 'pathways to prosperity' on her Substack, <a href="https://jenniferangelamcrae.substack.com/about" target="_blank">f*ck i love you</a>, or her weekly synthesis podcast, <a href="https://jenniferangelamcrae.substack.com/about" target="_blank">f*ck i loved that</a>.</p>
+    </div>
+
+    <div class="chatbot-section">
+        <h3>Chat with Jenn's AI!</h3>
+        <p>Have more questions about these economic pathways? Engage with Jenn's AI chatbot directly:</p>
+        <div class="chatbot-iframe-container">
+            <iframe class="chatbot-iframe" src="https://chat.jennifermcrae.ca/"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Exploratory Website | Designed to challenge TINA.</p>
+    </footer>
+
+    <script>
+        const data = [
+            // Row 1: ComparisonAspect, Transactional Economy, Transition Economy, Relational Economy, Traditional Indigenous Economies (Indigenomics), Post-Labour Economics, Abundance Economics, Wellbeing Economics, Circular Economics, Participatory Economics, Social Solidarity Economy (SSE), Degrowth Economics, Ecological Economics, Regenerative Economics
+            ["Definition", "The economy defined under NeoLiberal worldviews and economic policy, that sometimes gets called 'Late Stage Capitalism'. It functions on disconnection, extraction, exploitation. Its linear in design making it inherently unsustnable. Transactions (rather than exchanges of value) are at the center of wealth creation. Individuals are more important than collectives.", "The collection of values, infrastructure, projects, professionals and services that are intended to 'transition' humanity to different futures, especially those to do with the energy economy, the materials economy and attempts to solve for the material and environmental pains and externalities produced by capitalism. It does not yet acknowledge bio-psycho-social externalities of Capitalism, it is not just about transitional infrastructure, it is still where transitional mindsets are still present.", "A present and emergent economy that will eventually be identified as 'post-capitalist' and intra-national. Its design and infrastructure enables the realization of economic sovreignty for individuals and collectives. It is based on an emergent worldview that centers connection to self and other and acknowledges the internet has re-enabled digital global oral culture. The Creator Economy, The Wellbeing Economy, The Alternative Lifestyles Econonomy are all expressions of a Relational Economy, its logic and structures.", "Focus on sustainable living and community-based practices, emphasizing balance with nature, reciprocal relationships, and stewardship of the environment. They are often guided by long-standing traditions and cultural values, which prioritize collective well-being over individual wealth accumulation.", "Envision a future where the centrality of labor in individuals' lives and economies is reduced, thanks to automation, artificial intelligence, and other technological advancements. This paradigm explores concepts like Universal Basic Income (UBI), redefining work, and ensuring equitable distribution of wealth and resources in a post-labor society.", "Based on the principle that technological progress and innovative production methods can create an abundance of goods and services, making them available to all. This paradigm challenges the scarcity mindset and explores how abundance can lead to new forms of economic organization and wealth distribution.", "Focuses on achieving a sustainable and equitable economy that promotes human well-being and happiness, rather than merely maximizing GDP. It emphasizes measures like the Genuine Progress Indicator (GPI) and happiness indices to gauge economic success, incorporating health, education, environmental quality, and social equity into economic planning and policy.", "This paradigm emphasizes the reduction, reuse, and recycling of materials in production and consumption processes to create a closed-loop system, minimizing waste and the use of finite resources. It aims for economic development within the planet's ecological limits.", "Also known as 'Parecon,' this model advocates for participatory decision-making processes in economic planning and allocation. It emphasizes equity, solidarity, diversity, and participatory self-management, challenging traditional hierarchies and market dynamics.", "Focuses on enterprises and organizations (including cooperatives, mutual associations, and nonprofit ventures) that operate on principles of solidarity, mutual aid, and community benefit, rather than maximizing profit. It promotes economic and social inclusion, sustainable development, and democratic governance.", "Challenges the paradigm of continuous economic growth, arguing for the reduction of production and consumption to achieve environmental sustainability and social justice. It advocates for a cultural and economic shift towards simpler living, reduced material consumption, and an economy focused on human well-being and ecological balance.", "Emphasizes the integration of economic activity within ecological limits. It advocates for sustainable scale, equitable distribution, and efficient allocation of resources, recognizing the value of biodiversity and ecosystem services in economic systems.", "Emphasizes the creation of systems that restore and revitalize their own sources of energy and materials, aiming for a harmonious integration of economic activities with natural systems. It advocates for practices that regenerate ecosystems and communities, ensuring long-term sustainability and resilience."],
+            ["Celebrity Spokesperson", "Elon & Kanye", "Gretta Thunberg", "Issa Rae, Beyonce, Reese Witherspoon, Oprah", "Carol Anne Hilton, Winona LaDuke, Jen Harper", "Andrew Yang", "Tony Robbins, Peter Diamandis", "Jacinda Ardern", "Ellen MacArthur", "Noam Chomsky", "Naomi Klein", "Charles Eisenstein", "David Suzuki", "Autumn Pelltier"],
+            ["Economic Indicator", "The prevailing characteristics or defining features of each economic system. It describes the key attributes or phenomena that symbolize or encapsulate the essence of each type of economyLate-stage neo-liberal capitalism and hyper-individualistic culture", "Mix of transactional and relational elements", "Community-centered, sustainable practices", "Economies rooted in spiritual and communal values, focused on ecological balance", "Economies leveraging automation and AI to transcend traditional labor and wealth generation models", "Economies characterized by rapid technological growth leading to an abundance of resources", "Economies prioritizing psychological and physical health, wellbeing, and sustainability", "Emphasis on sustainability and efficiency in resource use, promoting recycling and reusability.", "Decision-making processes are participatory, aiming for equitable distribution of resources.", "Operations based on principles of solidarity, mutual aid, and community benefit.", "Reduction of consumption and production to achieve sustainability and social equity.", "Integration of economic activity within ecological limits and valuing ecosystem services.", "Emphasizes holistic growth, sustainability, and systemic health. Measures success by ecological resilience and community well-being rather than GDP alone."],
+            ["Worldview", "The collective understanding and interpretation of the world, influencing political and economic perspectives and decisions.Individual success, competition, market-driven", "Awareness of interconnectedness, balance of individual and community welfare", "Collective well-being, sustainability, collaboration", "Spiritually oriented, relatedness of all things, cyclical and ecological understanding of time", "Collaboration and AI-enhanced human potential", "Infinite possibilities through technology", "Holistic, considers mental and environmental health", "The economy functions within the planet's ecological limits, focusing on sustainability.", "Economic justice and democracy are central, with a focus on eliminating hierarchies.", "Community and social welfare are prioritized over profit.", "A critique of growth-centric economies, advocating for sustainable living and well-being over economic expansion.", "The economy is interdependent with ecological systems, emphasizing sustainability and conservation.", "Sees the planet as a living system, with economies as subsystems that should support ecological and social regeneration."],
+            ["Values", "Core beliefs and principles that guide the behavior and decision-making processes within a society or economy.Profit, efficiency, consumerism", "Sustainability, social responsibility, equity", "Community, equality, holistic well-being", "Balance, wealth for community good, generosity across generations", "Innovation, accessibility, AI ethics", "Growth, innovation, abundance", "Wellbeing, equality, sustainability", "Sustainability, efficiency, resilience.", "Equity, solidarity, diversity, participatory self-management.", "Solidarity, cooperation, equity.", "Sustainability, sufficiency, social justice.", "Sustainability, interdependence, biodiversity.", "Prioritizes sustainability, equity, community, and long-term well-being over short-term profit."],
+            ["Key Cultural Practices", "Predominant customs and activities that reflect and reinforce the values and worldview of a society.Consumerism, competitive work culture", "Social entrepreneurship, corporate responsibility", "Sharing economy, cooperative ventures", "Practices rooted in kinship, spiritual connection to land, cyclical events", "AI collaboration, lifelong learning", "Technological innovation, digital nomadism", "Community health initiatives, sustainable living", "Sustainable consumption, recycling, and circular production processes.", "Participatory decision-making, community engagement.", "Cooperative enterprises, mutual aid networks, community-supported agriculture.", "Simplified living, community-oriented lifestyles, reduced material consumption.", "Sustainable land management, conservation efforts, green technologies.", "Practices like sustainable agriculture, local sourcing, community investment, and circular economy initiatives."],
+            ["Economy Metaphor", "A symbolic representation used to conceptualize and communicate the nature and function of an economy.Machine – efficient, output-focused", "Bridge – transitioning state", "Ecosystem – diverse, resilient", "Web or Circle – interconnected, holistic, cyclical", "Network – fluid, dynamic", "Galaxy – expansive, exploratory", "Garden – nurtured, balanced", "The economy as a closed-loop system, mirroring natural cycles.", "The economy as a participatory network, emphasizing democratic involvement.", "The economy as a community garden, nurturing mutual support and sustainability.", "The economy as a balanced ecosystem, prioritizing harmony over growth.", "The economy as a subset of the ecosystem, dependent on its vitality and resilience.", "The economy is seen as a garden that needs tending, where diversity and health of the ecosystem are crucial for resilience and productivity."],
+            ["Economic Mechanisms", "The processes and structures through which economic activities are organized and managed (e.g., markets, planning).Market-based, capital-driven, extractive", "Mixed market and planned interventions", "Community-driven, stakeholder-focused, circular", "Community consensus, reciprocity, stewardship", "Decentralized, AI-driven platforms", "Technology-driven, open access", "Participatory, community-driven", "Circular supply chains, product-as-service models, zero-waste systems.", "Participatory planning and allocation, worker-managed firms.", "Social enterprises, cooperatives, non-profit organizations.", "Local economies, sharing economies, community currencies.", "Environmental accounting, green taxes, cap-and-trade systems.", "Collaborative networks, community-based decision-making, and systems thinking in economic planning."],
+            ["Dominant Industries", "The major sectors or fields of economic activity that drive a region's or nation's economy.Finance, Technology, Oil and Gas", "Renewable energy, sustainable tech", "Local and sustainable industries, community industries, creator economy, refuge economy, livelihood economy", "Sustainable land use, traditional crafts, localized trade", "AI, green tech, creative industries", "Space exploration, biotech, AI", "Healthcare, education, green tech", "Renewable energy, recycling, sustainable agriculture and manufacturing.", "Diverse, but emphasizes sectors that can easily implement participatory practices.", "Cooperative sector, social enterprises, ethical banking.", "Sustainable agriculture, eco-tourism, renewable energy.", "Green technology, sustainable agriculture, conservation services.", "Sustainable agriculture, renewable energy, green building, and ecological restoration."],
+            ["Major Pains", "Significant challenges or problems facing an economy, often reflecting underlying structural issues.Inequality, environmental degradation", "Transition challenges, economic uncertainties", "Integrating new practices into existing systems", "Historical disruption and systemic exclusion, reclaiming traditional economic systems", "Ethical AI use, technological unemployment", "Managing abundance, ethical considerations", "Ensuring wellbeing, access to resources", "Transition challenges from linear to circular models, market acceptance, regulatory frameworks.", "Complexity in decision-making processes, scalability.", "Market competition with profit-driven enterprises, funding.", "Resistance from growth-oriented economic structures, cultural shift towards simplicity.", "Integrating economic valuation of ecosystem services, policy adoption.", "Environmental degradation, loss of biodiversity, social inequality, and resource depletion."],
+            ["Labour Market Dynamics", "The patterns and forces that influence the supply, demand, and conditions of labor within an economy.Competitive, skills-focused", "Focus on adaptability, lifelong learning", "Community roles, collaborative work", "Roles defined by community needs, skills passed through generations", "AI-augmented roles, flexible work", "Project-based, global talent pools", "Wellness-focused roles, community service", "Emphasis on green jobs, skills for sustainable industries.", "Designed to be equitable and empowering, reducing hierarchies.", "Focus on meaningful work and community service, often within cooperative structures.", "Shift towards less work and more community-oriented activities.", "Promotion of jobs that contribute to ecological sustainability.", "Emphasis on fair and meaningful work, local employment opportunities, and community-supported enterprises."],
+            ["Wealth-Generating Mechanisms", "Systems and methods through which an economy produces and accumulates wealth.Capital investment, industrial production", "Sustainable investments, social impact funding", "Local investments, community investments/flywheels, fractional ownership", "Resource stewardship, communal wealth distribution", "AI-enhanced productivity, shared ownership", "Exponential growth in tech sectors", "Community wellbeing as wealth", "Innovation in sustainable products and services, efficiency gains.", "Equitable distribution of resources, collective ownership.", "Social capital, community resilience, ethical investments.", "Quality of life improvements, community well-being.", "Ecological health as a foundation for economic wealth.", "Wealth is generated through regenerative practices that enhance ecosystem services, community health, and local economies."],
+            ["Incentives", "Motivations or rewards designed to influence the behavior of economic actors.Financial gain, market dominance", "Financial stability, social impact", "Community well-being, social impact", "Community prosperity, ecological balance, cultural preservation", "Innovation, societal contribution", "Technological breakthroughs, global impact", "Personal and community health", "Environmental sustainability, long-term resilience.", "Social and economic equity, democratic participation.", "Community welfare, mutual aid, ethical considerations.", "Environmental conservation, social well-being.", "Long-term ecological viability, sustainability incentives.", "Incentives for sustainable practices, social equity, and long-term investment in community and ecological health."],
+            ["Unit of Action", "The smallest entity or actor (individual, organization, etc.) that makes decisions and takes actions in an economy.Individual corporations", "Public-private partnerships", "Community groups, cooperatives", "Community and tribal decision-making bodies", "Collaborative networks, AI interfaces", "Individual innovators, tech communities", "Individuals, holistic health practitioners", "Businesses and consumers engaged in circular practices.", "Individuals and collectives in participatory decision-making structures.", "Social enterprises, cooperatives, communities.", "Communities, individuals advocating for and practicing degrowth.", "Governments, businesses, communities focused on ecological sustainability.", "Individuals and community groups as key actors in driving regenerative practices."],
+            ["Unit of Sovereignty", "The entity (typically a nation-state) that possesses ultimate authority and decision-making power over an economy.Nation-states, regulatory bodies", "Collaboration between states, NGOs, communities", "Local communities, decentralized governance", "Tribal governance, communal decision-making", "Decentralized autonomous organizations", "Global tech consortia", "Community health collectives", "Typically localized, but with potential for global impact through networks.", "Community or worker collectives, decentralized governance.", "Community-based organizations and networks.", "Local to global communities, with emphasis on grassroots movements.", "National to international, with significant roles for global environmental governance.", "Shared sovereignty among local communities, regions, and nations, emphasizing decentralized decision-making."],
+            ["Measure of Wealth", "The metric or standard used to assess and compare wealth within and across economies.GDP, stock indices, corporate profits", "GDP plus social/environmental indicators", "Community health, quality of life metrics", "Well-being of community, health of land and people, cultural richness", "AI productivity, access to technology", "Technological capacity, resource availability", "Health indices, environmental sustainability", "Efficiency in resource use, sustainability indices, circularity metrics.", "Equitable resource distribution, participatory engagement metrics.", "Social and economic well-being, community impact.", "Well-being and ecological footprint measures.", "Ecological health indicators, sustainable development goals.", "Beyond GDP, incorporating measures of social and ecological well-being, such as the Genuine Progress Indicator (GPI)."],
+            ["Key Technologies", "Fundamental tools and innovations that significantly influence economic activities and productivity.Automation, IT", "Renewable energy, sustainable tech", "Sustainable living tech, community connectivity", "Technologies harmonizing with nature, traditional knowledge", "AI, blockchain, sustainable tech", "Nanotech, AI, renewable energy", "Health tech, green infrastructure", "Recycling technologies, renewable energy, sustainable materials.", "Communication and planning tools for participatory processes.", "Platforms for cooperative management, social finance tools.", "Technologies that reduce resource use and environmental impact.", "Environmental monitoring, green technologies, sustainable production methods.", "Green technologies, renewable energy systems, and regenerative agriculture techniques."],
+            ["Governance Structures", "How economic activities are regulated and governed, including the role of institutions and policies.Centralized, top-down", "Collaborative, multi-stakeholder", "Community-led, participatory", "Consensus-based, elders' counsel, tribal governance", "AI-driven consensus, decentralized governance", "Collaborative, technology-enabled", "Community health boards, participatory governance", "Environmental regulations, incentives for circular practices.", "Democratic institutions at the workplace and community level.", "Regulatory frameworks supporting cooperatives and social businesses.", "Policies encouraging reduced consumption, environmental protection.", "Multilevel governance, incorporating ecological considerations into economic policy.", "Decentralized, participatory governance models that engage community stakeholders in decision-making."],
+            ["Market Structures and Competition", "The nature of market competition, including monopoly, oligopoly, and perfect competition scenarios.Highly competitive", "Cooperative models, sustainable competition", "Cooperative, community-centric", "Cooperative, based on sharing and reciprocity", "Open-source, collaborative", "Innovation-driven, open markets", "Wellbeing-focused, cooperative", "Competitive within green sectors, collaborative in sharing circular practices.", "Designed to minimize competitive pressures, promoting cooperative ventures.", "Mixed, with a focus on ethical and cooperative market players.", "Reduced emphasis on market competition, focusing on local and sustainable provision of needs.", "Incorporates ecological costs, promoting sustainable goods and services.", "Cooperative and collaborative market structures that support mutual aid, sharing resources, and collective success."],
+            ["Resource Allocation Methods", "How resources are distributed across the economy, including market-based, command, or mixed approaches.Market-based, privatization", "Strategic planning, public-private partnerships", "Community-based management, equitable distribution", "Communal stewardship, respect for natural limits", "AI-optimized distribution, universal access", "Technological abundance, equitable access", "Community-based, health-oriented", "Market-based, but with strong regulatory and incentive frameworks for circularity.", "Participatory planning and allocation, based on democratic consensus.", "Often community-driven, prioritizing social and ecological goals.", "Localized decision-making, prioritizing ecological and social needs.", "Mix of market mechanisms and regulatory policies aiming for ecological sustainability.", "Community-based resource management, emphasizing equitable access and sustainable use of local resources."],
+            ["Social and Environmental Impact", "The effects of economic activities on society and the environment, considering sustainability and social welfare.Often negative", "Integrating social/environmental considerations", "Prioritization of social/environmental well-being", "Living in balance with nature, sustainable practices", "AI ethics, environmental sustainability", "Technological solutions to global challenges", "Health and sustainability as core", "Positive, aiming for reduced waste and lower ecological footprint.", "Aims for social justice and economic equity, with potential positive environmental impacts.", "Positive impact on community cohesion and environmental sustainability.", "Directly addresses overconsumption and environmental degradation.", "Focused on preserving ecological integrity and promoting sustainability.", "Positive impacts prioritized, aiming for zero waste, enhanced biodiversity, and improved community resilience."],
+            ["Economic Stability and Growth Patterns", "How economies respond to external shocks and their patterns of growth or contraction.Market fluctuations, continuous growth focus", "Resilience, sustainable growth", "Sustainable, steady-state models", "Long-term sustainability, cyclical understanding of growth", "Adaptive, AI-enhanced resilience", "Rapid innovation, scalable solutions", "Health-based, sustainable growth", "Seeks stable, sustainable growth within ecological constraints.", "Stability through equitable distribution and participatory governance.", "Emphasizes resilience and sustainability over traditional growth.", "Questions the paradigm of growth, seeking stability in reduction.", "Seeks a balance between economic activity and ecological capacity.", "Focus on resilience, adaptability, and sustainable growth, reducing vulnerability to economic and environmental shocks."],
+            ["Income Distribution and Inequality", "The way wealth and income are distributed among different groups within the economy.High inequality, wealth concentration", "More equitable distribution efforts", "Equitable distribution, community wealth-building", "Shared prosperity, communal support systems", "Universal access, equity in AI benefits", "Abundance reduces inequality", "Equitable access to health and resources", "Aims for equitable growth, but challenges remain in access and inclusion.", "Designed to significantly reduce inequality through participatory economics.", "Aims to reduce inequality by prioritizing social and solidarity principles.", "Promotes equity through reduced consumption and focus on well-being.", "Seeks to align economic incentives with ecological conservation, potentially reducing inequality.", "Strives for equitable distribution, minimizing gaps through progressive policies and community support mechanisms."],
+            ["Cultural and Social Norms", "How societal values and norms influence economic behavior and practices.Individual achievement, consumer culture", "Balance of individualism and community responsibility", "Collective responsibility, environmental stewardship", "Kinship, connection to land, communal responsibility", "AI collaboration, lifelong learning", "Creativity, exploration", "Wellbeing, community support", "Sustainability and stewardship as central values.", "Democracy, equity, and participation in economic life.", "Solidarity, mutual aid, and community orientation.", "Simplicity, sustainability, and community well-being.", "Ecological awareness and responsibility.", "Norms that favor cooperation, stewardship of the environment, and collective well-being over individual gain."],
+            ["Technological Adoption and Innovation Rates", "The speed and manner in which new technologies are integrated into the economy.Rapid adoption for efficiency, profit", "Balanced adoption for social/environmental impact", "Selective adoption for community benefit", "Adoption harmonious with cultural practices, nature", "Agile, community-focused", "Exponential, driven by open innovation", "Wellbeing-oriented, sustainable tech", "High in green tech and sustainable solutions.", "Varied, with emphasis on technologies that support participatory and democratic processes.", "Focused on social and environmentally friendly technologies.", "Selective, favoring technologies that reduce ecological impact.", "High, especially in sectors that contribute to ecological health.", "Rapid adoption of sustainable technologies, with innovation driven by ecological and social needs."],
+            ["Globalization and Trade Relations", "The impact and role of international trade and global economic interdependencies.Free market globalization, competition", "Fair trade, ethical sourcing, sustainable practices", "Local economies, responsible global interactions", "Localized trade, sustainable exchanges, respect for all parties", "Decentralized networks, digital trade", "Global collaboration, resource sharing", "Global wellbeing initiatives, ethical trade", "Encourages local production and consumption cycles, but also global sharing of best practices.", "Skeptical of globalization in favor of localizing economic activity.", "Supports fair trade and ethical globalization practices.", "Advocates for reduced global trade and increased local self-sufficiency.", "Promotes sustainable trade practices and environmental considerations in global exchanges.", "Promotion of local economies while supporting fair trade and ethical global partnerships."],
+            ["Financial Systems and Capital Flows", "The structure of financial markets and the movement of capital within and across economies.Capital markets, global systems", "Blended finance, impact investing", "Community banks, local investment models", "Communal resource pooling, equitable trade practices", "Cryptocurrencies, DAOs", "Crowdfunding, global investments", "Wellbeing investments, community funds", "Investments in circular economy initiatives, green bonds.", "Community financing, ethical banking, and participatory budgeting.", "Social finance, ethical investment, community funding mechanisms.", "Local financial systems, alternative currencies.", "Green finance, investment in sustainability projects.", "Alternative financing models, like community-supported finance, that prioritize local development and ecological sustainability."],
+            ["Consumer Behavior and Demand Patterns", "The influences on and patterns of consumer purchasing and consumption.Advertising-driven, trend-based consumption", "Demand for sustainable, ethical products", "Community-oriented consumption", "Needs-based consumption, resource respect", "Ethical, AI-informed choices", "Abundance-driven creativity", "Health and sustainability-driven", "Shift towards sustainable products and services, reduced consumption.", "Consumer decisions influenced by democratic and equitable economic structures.", "Preference for cooperatively produced and socially responsible products.", "Reduced material consumption, emphasis on quality and sustainability.", "Ecologically informed consumption, preference for sustainable goods.", "Conscious consumption, preference for local and sustainable products, and reduced material consumption."],
+            ["Political Influence and Policy Objectives", "The impact of political ideologies and objectives on economic decisions and policies.Market-driven policies, corporate influence", "Policy shifts towards sustainability, equity", "Policies for community empowerment, environmental protection", "Policies supporting Indigenous rights, land stewardship", "AI governance, ethical standards", "Technological freedom, global cooperation", "Policies promoting health and wellbeing", "Strong advocacy for environmental policies and regulations.", "Grassroots political action for economic democracy and justice.", "Policy support for social enterprises and cooperative business models.", "Political movements advocating for degrowth and sustainability.", "Environmental policy and sustainable development at the core.", "Policies that support regenerative economic practices, sustainability, and community empowerment."],
+            ["Legal Frameworks", "The laws and regulations that underpin economic activities and transactions.Traditional corporate/trade laws", "Social/environmental legal integration", "Supporting community rights, sustainable practices", "Indigenous Law", "AI ethics, digital rights", "Innovation protection, global standards", "Health and environmental protection laws", "Regulations that support circular economy practices, product stewardship laws.", "Laws enabling participatory decision-making, worker self-management.", "Legal support for cooperatives, social enterprises, and mutual aid structures.", "Policies promoting environmental conservation, limits on resource extraction.", "Environmental protection laws, regulations encouraging sustainable practices.", "Legal support for cooperative business models, environmental protection, and social equity."]
+        ];
+
+        const economicModels = [
+            "Transactional Economy", "Transition Economy", "Relational Economy",
+            "Traditional Indigenous Economies (Indigenomics)", "Post-Labour Economics", "Abundance Economics",
+            "Wellbeing Economics", "Circular Economics", "Participatory Economics",
+            "Social Solidarity Economy (SSE)", "Degrowth Economics", "Ecological Economics",
+            "Regenerative Economics"
+        ];
+
+        const comparisonAspectSelect = document.getElementById('comparisonAspectSelect');
+        const comparisonTableBody = document.getElementById('comparisonTable').getElementsByTagName('tbody')[0];
+        const economicModelSelectAI = document.getElementById('economicModelSelectAI');
+        const generateSummaryBtn = document.getElementById('generateSummaryBtn');
+        const aiResponseDiv = document.getElementById('aiResponse');
+
+        // Populate the dropdown with comparison aspects
+        data.forEach(row => {
+            const option = document.createElement('option');
+            option.value = row[0];
+            option.textContent = row[0];
+            comparisonAspectSelect.appendChild(option);
+        });
+
+        // Populate the AI dropdown with economic models
+        economicModels.forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            economicModelSelectAI.appendChild(option);
+        });
+
+        // Function to update the table based on selected aspect
+        function updateComparisonTable() {
+            const selectedAspect = comparisonAspectSelect.value;
+            comparisonTableBody.innerHTML = ''; // Clear previous results
+
+            if (!selectedAspect) {
+                return; // Do nothing if no aspect is selected
+            }
+
+            const selectedRowData = data.find(row => row[0] === selectedAspect);
+
+            if (selectedRowData) {
+                // Add the core three pathways to the comparison for the selected aspect as well
+                for (let i = 0; i < 3; i++) { // Transactional, Transition, Relational
+                    const tr = document.createElement('tr');
+                    const tdModel = document.createElement('td');
+                    tdModel.textContent = economicModels[i];
+                    tr.appendChild(tdModel);
+
+                    const tdValue = document.createElement('td');
+                    tdValue.textContent = selectedRowData[i + 1]; // +1 because first col is aspect name
+                    tr.appendChild(tdValue);
+                    comparisonTableBody.appendChild(tr);
+                }
+
+                // Displaying from Traditional Indigenous Economies onwards (index 4 in data array)
+                for (let i = 3; i < economicModels.length; i++) {
+                    const tr = document.createElement('tr');
+                    const tdModel = document.createElement('td');
+                    tdModel.textContent = economicModels[i]; // Use the cleaner model name array
+                    tr.appendChild(tdModel);
+
+                    const tdValue = document.createElement('td');
+                    // Data array index aligns with economicModels array index shifted by 1 for the 'ComparisonAspect' column
+                    tdValue.textContent = selectedRowData[i + 1];
+                    tr.appendChild(tdValue);
+                    comparisonTableBody.appendChild(tr);
+                }
+            }
+        }
+
+        // Function to generate AI summary
+        generateSummaryBtn.addEventListener('click', async () => {
+            const selectedModelName = economicModelSelectAI.value;
+            if (!selectedModelName) {
+                aiResponseDiv.innerHTML = "Please select an economic model first.";
+                return;
+            }
+
+            // Find the definition for the selected model
+            const definitionRow = data.find(row => row[0] === "Definition");
+            let modelDefinition = "";
+            if (definitionRow) {
+                const modelIndex = economicModels.indexOf(selectedModelName);
+                if (modelIndex !== -1) {
+                    modelDefinition = definitionRow[modelIndex + 1]; // +1 because 'Definition' is the first column
+                }
+            }
+
+            aiResponseDiv.innerHTML = '<div class="loading-spinner"></div> Loading Sparkle Summary...';
+
+            try {
+                const prompt = `Provide a concise, engaging summary of the "${selectedModelName}" economic model in 3-4 sentences. Focus on its core idea, what makes it a unique alternative to the 'Transactional Economy', and its primary benefits or characteristics. Here is its definition: "${modelDefinition}"`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    aiResponseDiv.textContent = text;
+                } else {
+                    aiResponseDiv.textContent = "Error: Could not generate summary. Please try again.";
+                    console.error("Gemini API response structure unexpected:", result);
+                }
+            } catch (error) {
+                aiResponseDiv.textContent = "Error generating summary. Please check your network connection or try again later.";
+                console.error("Error calling Gemini API:", error);
+            }
+        });
+
+
+        // Attach event listener to the comparison dropdown
+        comparisonAspectSelect.addEventListener('change', updateComparisonTable);
+
+        // Initial call to populate table if a default is selected or to set up
+        updateComparisonTable();
+    </script>
+</body>
+</html>

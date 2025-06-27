@@ -513,7 +513,7 @@ const economicModels = [
                 let chatHistory = [];
                 chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                 const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyDSvIy8hy4nF-NKWw1Z0DpwM80bTaGJUm8";                 
+                const apiKey = "AIzaSyDCIgW8_1fOpYJlUArVqE1pHhnLVv9ZA4Q";                 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
                 const response = await fetch(apiUrl, {
                     method: 'POST',
